@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Services offered by Subin Joseph — Video Editing, Color Grading, Sound Design, Motion Graphics, Subtitles, and Thumbnail Design for content creators worldwide." />
+  <title>Services — Subin Joseph</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c3aed'/><text y='.9em' font-size='65' x='50%25' text-anchor='middle' font-family='system-ui' font-weight='900' fill='white'>SJ</text></svg>" />
+  <style>
+    .service-full-card {
+      padding: 40px;
+      border-radius: 24px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 28px;
+      align-items: start;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-full-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.3), 0 0 30px rgba(124,58,237,0.08);
+    }
+
+    .service-full-icon {
+      width: 64px; height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.3) 0%, rgba(168,85,247,0.15) 100%);
+      border: 1px solid rgba(124,58,237,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .service-full-body h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .service-full-body p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .service-tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: var(--purple-dim);
+      color: var(--purple-light);
+      border: 1px solid rgba(124,58,237,0.25);
+    }
+
+    /* Pricing philosophy */
+    .pricing-philosophy {
+      padding: 48px;
+      border-radius: 28px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .pricing-philosophy h2 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .pricing-philosophy p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.75;
+    }
+
+    /* Video types */
+    .video-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .video-type-card {
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .video-type-card:hover { transform: translateY(-3px); }
+
+    .video-type-emoji { font-size: 28px; margin-bottom: 10px; }
+
+    .video-type-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 600px) {
+      .service-full-card {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.nav-logo').forEach(el => el.href = '../index.html');
+    document.querySelectorAll('.nav-link[data-page], .nav-cta[data-page]').forEach(el => {
+      const page = el.dataset.page;
+      if (page === 'index.html') el.href = '../index.html';
+      else el.href = page;
+    });
+  });
+</script>
+<script src="../js/layout.js"></script>
+
+<main class="page-main">
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="section-eyebrow fade-in">Services</div>
+      <h1 class="display-lg fade-in fade-in-delay-1">
+        Everything your<br><span class="grad-text">video needs.</span>
+      </h1>
+      <p class="text-muted fade-in fade-in-delay-2" style="margin-top:16px; max-width:520px; font-size:16px; line-height:1.75;">
+        From raw footage to final export — I handle the full post-production pipeline so your content looks exactly how you imagined it.
+      </p>
+    </div>
+
+    <!-- Services -->
+    <div class="service-full-card glass fade-in">
+      <div class="service-full-icon">🎬</div>
+      <div class="service-full-body">
+        <h3>Video Editing</h3>
+        <p>Narrative-driven, audience-focused editing that keeps viewers watching from the first second to the last. Whether it's a 30-second Reel or a 45-minute documentary, every cut is intentional.</p>
+        <div class="service-tags">
+          <span class="service-tag">YouTube Long-form</span>
+          <span class="service-tag">Reels / Shorts</span>
+          <span class="service-tag">Corporate Films</span>
+          <span class="service-tag">Documentary</span>
+          <span class="service-tag">Music Videos</span>
+          <span class="service-tag">Podcast Videos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-full-card glass fade-in fade-in-delay-1">
+      <div class="service-full-icon">🎨</div>
+      <div class="service-full-body">
+        <h3>Color Grading</h3>
+        <p>Professional color work done in DaVinci Resolve Studio 21. From primary correction to a full cinematic grade, I ensure your footage has a consistent, polished visual identity.</p>
+        <div class="service-tags">
+          <span class="service-tag">Primary Correction</span>
+          <span class="service-tag">Cinematic Grade</span>
+          <span class="service-tag">Brand-consistent Color</span>
+          <span class="service-tag">DaVinci Resolve Studio</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-full-card glass fade-in fade-in-delay-2">
+      <div class="service-full-icon">🔊</div>
+      <div class="service-full-body">
+        <h3>Sound Design</h3>
+        <p>Audio that complements the visuals. Clean dialogue, balanced music, punchy sound effects, and a mix that translates well across headphones, phone speakers, and studio monitors.</p>
+        <div class="service-tags">
+          <span class="service-tag">Audio Cleanup</span>
+          <span class="service-tag">Music Integration</span>
+          <span class="service-tag">SFX</span>
+          <span class="service-tag">Dialogue Mix</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-full-card glass fade-in fade-in-delay-3">
+      <div class="service-full-icon">✨</div>
+      <div class="service-full-body">
+        <h3>Motion Graphics</h3>
+        <p>Animated elements that add energy without distracting from your message. Titles, lower thirds, logo animations, transitions, and kinetic text — all designed to fit your brand.</p>
+        <div class="service-tags">
+          <span class="service-tag">Animated Titles</span>
+          <span class="service-tag">Lower Thirds</span>
+          <span class="service-tag">Logo Animation</span>
+          <span class="service-tag">Transitions</span>
+          <span class="service-tag">Kinetic Text</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-full-card glass fade-in fade-in-delay-4">
+      <div class="service-full-icon">💬</div>
+      <div class="service-full-body">
+        <h3>Subtitles & Captions</h3>
+        <p>Accurate, readable, styled captions that increase accessibility and boost watch time — particularly essential for short-form content where most viewers watch without sound.</p>
+        <div class="service-tags">
+          <span class="service-tag">Styled Captions</span>
+          <span class="service-tag">SRT Files</span>
+          <span class="service-tag">Accessibility</span>
+          <span class="service-tag">Short-form Optimized</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-full-card glass fade-in fade-in-delay-5">
+      <div class="service-full-icon">🖼️</div>
+      <div class="service-full-body">
+        <h3>Thumbnail Design</h3>
+        <p>High-CTR thumbnails designed to stop the scroll. Bold, clear, on-brand — crafted to give your video the best possible first impression on YouTube and other platforms.</p>
+        <div class="service-tags">
+          <span class="service-tag">YouTube Thumbnails</span>
+          <span class="service-tag">Brand Consistent</span>
+          <span class="service-tag">High CTR Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video types I edit -->
+    <div style="margin-top:80px;">
+      <div class="section-eyebrow fade-in">Formats I edit</div>
+      <h2 class="display-md fade-in fade-in-delay-1" style="margin-top:8px; margin-bottom:0;">
+        Any format. Any niche.
+      </h2>
+      <div class="video-types-grid">
+        <div class="video-type-card glass fade-in">
+          <div class="video-type-emoji">📺</div>
+          <div class="video-type-label">YouTube Long-form</div>
+        </div>
+        <div class="video-type-card glass fade-in fade-in-delay-1">
+          <div class="video-type-emoji">📱</div>
+          <div class="video-type-label">Reels / Shorts</div>
+        </div>
+        <div class="video-type-card glass fade-in fade-in-delay-2">
+          <div class="video-type-emoji">🏢</div>
+          <div class="video-type-label">Corporate / Brand</div>
+        </div>
+        <div class="video-type-card glass fade-in fade-in-delay-3">
+          <div class="video-type-emoji">🎙️</div>
+          <div class="video-type-label">Podcast Videos</div>
+        </div>
+        <div class="video-type-card glass fade-in fade-in-delay-4">
+          <div class="video-type-emoji">🎵</div>
+          <div class="video-type-label">Music Videos</div>
+        </div>
+        <div class="video-type-card glass fade-in fade-in-delay-5">
+          <div class="video-type-emoji">🎞️</div>
+          <div class="video-type-label">Documentary</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing philosophy -->
+    <div class="pricing-philosophy glass-purple fade-in">
+      <div style="font-size:40px; margin-bottom:16px;">💬</div>
+      <h2>Pricing that fits your project</h2>
+      <p>
+        Every project is different — a 60-second Reel and a 20-minute documentary aren't the same job. Instead of a fixed rate sheet, I discuss your project's scope, complexity, and timeline with you and arrive at a fair quote together.
+      </p>
+      <a href="contact.html" class="btn btn-primary">
+        Get a quote
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
