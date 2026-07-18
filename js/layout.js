@@ -53,7 +53,7 @@
         </p>
         <div class="footer-links">
           <a href="https://instagram.com/bugwithabackpack" class="footer-link" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://linkedin.com/in/subinjoseph" class="footer-link" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://linkedin.com/in/subin-joseph-2b9b70258" class="footer-link" target="_blank" rel="noopener">LinkedIn</a>
           <a href="pages/contact.html" class="footer-link">Contact</a>
         </div>
       </div>
