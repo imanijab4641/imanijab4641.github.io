@@ -11,41 +11,401 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c3aed'/><text y='.9em' font-size='65' x='50%25' text-anchor='middle' font-family='system-ui' font-weight='900' fill='white'>SJ</text></svg>" />
   <style>
-    .editor-wrap { position:relative; width:100%; max-width:420px; }
-    .editor-card { width:100%; padding:18px; border-radius:20px; position:relative; overflow:hidden; }
-    .editor-topbar { display:flex; align-items:center; gap:6px; margin-bottom:14px; }
-    .editor-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
-    .editor-title-bar { margin-left:8px; font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:0.05em; }
-    .preview-window { width:100%; aspect-ratio:16/9; border-radius:10px; background:linear-gradient(135deg,#1a0a2e 0%,#0d0d1a 100%); border:1px solid rgba(124,58,237,0.2); overflow:hidden; position:relative; margin-bottom:14px; }
-    .cinema-bar { position:absolute; left:0; right:0; height:18%; background:#000; z-index:2; }
-    .cinema-top { top:0; }
-    .cinema-bottom { bottom:0; }
-    .scene { position:absolute; inset:18% 0; overflow:hidden; }
-    .scene-gradient { position:absolute; inset:0; background:linear-gradient(135deg,rgba(124,58,237,0.5) 0%,rgba(9,8,15,0.8) 40%,rgba(168,85,247,0.3) 100%); animation:scene-shift 6s ease-in-out infinite; }
-    @keyframes scene-shift { 0%,100%{opacity:0.7} 50%{opacity:1} }
-    .light-ray { position:absolute; width:1px; height:140%; top:-20%; background:linear-gradient(to bottom,transparent,rgba(168,85,247,0.6),transparent); animation:ray-flicker 4s ease-in-out infinite; }
-    @keyframes ray-flicker { 0%,100%{opacity:0.3} 50%{opacity:0.9} }
-    .timecode { position:absolute; top:6px; left:8px; z-index:3; font-size:9px; font-family:'Courier New',monospace; color:rgba(255,255,255,0.4); letter-spacing:0.05em; }
-    .play-indicator { position:absolute; bottom:6px; right:8px; z-index:3; display:flex; align-items:center; gap:4px; }
-    .play-dot { width:6px; height:6px; border-radius:50%; background:#a855f7; animation:blink-play 1s infinite; }
-    @keyframes blink-play { 0%,100%{opacity:1} 50%{opacity:0.3} }
-    .play-text { font-size:9px; color:rgba(255,255,255,0.4); letter-spacing:0.1em; }
-    .tl-wrap { margin-bottom:12px; }
-    .tl-header { display:flex; justify-content:space-between; margin-bottom:8px; }
-    .tl-label { font-size:10px; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; }
-    .tl-time { font-size:10px; font-family:'Courier New',monospace; color:#a855f7; }
-    .tl-tracks { position:relative; padding-left:44px; }
-    .tl-playhead { position:absolute; top:0; bottom:0; width:1.5px; background:#a855f7; box-shadow:0 0 8px rgba(168,85,247,0.8); z-index:10; animation:playhead-scrub 6s linear infinite; }
-    .tl-playhead::before { content:''; position:absolute; top:-4px; left:50%; transform:translateX(-50%); width:8px; height:8px; background:#a855f7; border-radius:2px; box-shadow:0 0 8px rgba(168,85,247,0.8); }
-    @keyframes playhead-scrub { 0%{left:5%} 100%{left:95%} }
-    .tl-track { height:18px; border-radius:4px; background:rgba(255,255,255,0.03); margin-bottom:5px; display:flex; gap:2px; padding:3px; position:relative; overflow:hidden; }
-    .tl-track-label { position:absolute; left:-44px; top:50%; transform:translateY(-50%); font-size:8px; color:rgba(255,255,255,0.25); letter-spacing:0.05em; width:40px; text-align:right; }
-    .tl-clip { height:100%; border-radius:3px; flex-shrink:0; animation:clip-glow 3s ease-in-out infinite; position:relative; overflow:hidden; }
-    .tl-clip::after { content:''; position:absolute; top:0; left:0; right:0; height:50%; background:rgba(255,255,255,0.12); }
-    @keyframes clip-glow { 0%,100%{opacity:0.85} 50%{opacity:1} }
-    .editor-tools { display:flex; gap:5px; }
-    .editor-tool { flex:1; padding:6px 4px; border-radius:7px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); font-size:10px; color:rgba(255,255,255,0.35); text-align:center; }
-    .editor-tool.active { background:rgba(124,58,237,0.2); border-color:rgba(124,58,237,0.4); color:#a855f7; }
+    /* ── HERO REDESIGN ── */
+    .hero-v2 {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Big background glow */
+    .hero-v2::before {
+      content: '';
+      position: absolute;
+      width: 800px; height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-20%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-v2-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* LEFT SIDE */
+    .hero-v2-left {}
+
+    .hero-v2-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--purple-light);
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.25);
+      margin-bottom: 28px;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-v2-tag-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--purple-light);
+      animation: pulse 2s infinite;
+    }
+
+    .hero-v2-title {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 76px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero-v2-desc {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 440px;
+    }
+
+    .hero-v2-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .hero-v2-stats {
+      display: flex;
+      gap: 32px;
+    }
+
+    .hero-v2-stat-num {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hero-v2-stat-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-v2-stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+      align-self: stretch;
+    }
+
+    /* RIGHT SIDE — clean integrated visual */
+    .hero-v2-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Top row: two small cards side by side */
+    .hero-v2-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .hcard {
+      border-radius: 18px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hcard::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
+      pointer-events: none;
+    }
+
+    /* Preview card — full width */
+    .hcard-preview {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1a0828 0%, #0d0d1a 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(124,58,237,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Cinematic scene */
+    .hcard-scene {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(124,58,237,0.4) 0%,
+        rgba(9,8,15,0.6) 50%,
+        rgba(168,85,247,0.25) 100%
+      );
+      animation: scene-breathe 5s ease-in-out infinite;
+    }
+
+    @keyframes scene-breathe {
+      0%,100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    .hcard-ray {
+      position: absolute;
+      width: 1px;
+      height: 200%;
+      top: -50%;
+      background: linear-gradient(to bottom, transparent, rgba(168,85,247,0.5), transparent);
+      animation: ray-breathe 5s ease-in-out infinite;
+    }
+
+    @keyframes ray-breathe {
+      0%,100% { opacity: 0.2; }
+      50% { opacity: 0.7; }
+    }
+
+    .hcard-timecode {
+      position: absolute;
+      top: 12px; left: 14px;
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      color: rgba(255,255,255,0.5);
+      z-index: 2;
+      letter-spacing: 0.05em;
+    }
+
+    .hcard-play {
+      position: absolute;
+      bottom: 12px; right: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 2;
+    }
+
+    .hcard-play-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #a855f7;
+      box-shadow: 0 0 8px rgba(168,85,247,0.8);
+      animation: pulse-play 1.2s infinite;
+    }
+
+    @keyframes pulse-play {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hcard-play-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.12em;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Cinema bars */
+    .hcard-bar {
+      position: absolute;
+      left: 0; right: 0;
+      height: 14%;
+      background: rgba(0,0,0,0.85);
+      z-index: 1;
+    }
+    .hcard-bar-top { top: 0; }
+    .hcard-bar-bottom { bottom: 0; }
+
+    /* Timeline card */
+    .hcard-timeline {
+      padding: 18px;
+    }
+
+    .hcard-tl-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .hcard-tl-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hcard-tl-time {
+      font-size: 10px;
+      font-family: 'Courier New', monospace;
+      color: var(--purple-light);
+    }
+
+    .hcard-tracks {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hcard-playhead {
+      position: absolute;
+      top: -4px; bottom: -4px;
+      width: 2px;
+      background: var(--purple-light);
+      box-shadow: 0 0 10px rgba(168,85,247,0.9);
+      border-radius: 2px;
+      z-index: 5;
+      animation: ph-move 5s linear infinite;
+    }
+
+    .hcard-playhead::after {
+      content: '';
+      position: absolute;
+      top: -1px; left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--purple-light);
+    }
+
+    @keyframes ph-move {
+      0% { left: 3%; }
+      100% { left: 97%; }
+    }
+
+    .hcard-track {
+      height: 14px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      display: flex;
+      gap: 3px;
+      padding: 2px;
+    }
+
+    .hcard-clip {
+      height: 100%;
+      border-radius: 4px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      animation: clip-breathe 4s ease-in-out infinite;
+    }
+
+    .hcard-clip::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px 4px 0 0;
+    }
+
+    @keyframes clip-breathe {
+      0%,100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    /* Info card (tools) */
+    .hcard-tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .hcard-tool {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s;
+    }
+
+    .hcard-tool.active {
+      background: rgba(124,58,237,0.15);
+      border-color: rgba(124,58,237,0.35);
+      color: var(--purple-light);
+    }
+
+    .hcard-tool-icon { font-size: 14px; }
+
+    /* Status card */
+    .hcard-status {
+      padding: 20px;
+    }
+
+    .hcard-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .hcard-status-row:last-child { border-bottom: none; }
+
+    .hcard-status-label {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .hcard-status-val {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot-green {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px rgba(74,222,128,0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-v2-inner { grid-template-columns: 1fr; }
+      .hero-v2-right { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-v2-actions { flex-direction: column; }
+      .hero-v2-stats { gap: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -54,116 +414,136 @@
 
 <main class="page-main">
 
-  <!-- ══ HERO ══════════════════════════════════════════════ -->
-  <section class="hero">
+  <!-- ══ HERO V2 ═════════════════════════════════════════════ -->
+  <section class="hero-v2">
     <div class="container">
-      <div class="hero-grid">
+      <div class="hero-v2-inner">
 
-        <!-- Left: Copy -->
-        <div class="hero-copy">
-          <div class="hero-tag fade-in">
-            <span class="hero-tag-dot"></span>
+        <!-- LEFT: Copy -->
+        <div class="hero-v2-left">
+          <div class="hero-v2-tag fade-in">
+            <span class="hero-v2-tag-dot"></span>
             Freelance Video Editor
           </div>
 
-          <h1 class="display-xl hero-title fade-in fade-in-delay-1">
+          <h1 class="hero-v2-title fade-in fade-in-delay-1">
             Your story,<br><span class="grad-text">cut sharp.</span>
           </h1>
 
-          <p class="hero-desc fade-in fade-in-delay-2">
-            I edit videos that hold attention — from YouTube long-form to brand films and short-form content. Built on clear communication, cinematic sensibility, and rates that make sense.
+          <p class="hero-v2-desc fade-in fade-in-delay-2">
+            I edit videos that hold attention — from YouTube long-form to brand films and short-form content. Clear communication, cinematic sensibility, rates that make sense.
           </p>
 
-          <div class="hero-actions fade-in fade-in-delay-3">
+          <div class="hero-v2-actions fade-in fade-in-delay-3">
             <a href="pages/portfolio.html" class="btn btn-primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               View my work
             </a>
-            <a href="pages/contact.html" class="btn btn-glass">
-              Let's talk
-            </a>
+            <a href="pages/contact.html" class="btn btn-glass">Let's talk</a>
+          </div>
+
+          <div class="hero-v2-stats fade-in fade-in-delay-4">
+            <div>
+              <div class="hero-v2-stat-num">7+</div>
+              <div class="hero-v2-stat-label">Video formats</div>
+            </div>
+            <div class="hero-v2-stat-divider"></div>
+            <div>
+              <div class="hero-v2-stat-num">∞</div>
+              <div class="hero-v2-stat-label">Creative ideas</div>
+            </div>
+            <div class="hero-v2-stat-divider"></div>
+            <div>
+              <div class="hero-v2-stat-num">24h</div>
+              <div class="hero-v2-stat-label">Response time</div>
+            </div>
           </div>
         </div>
 
-        <!-- Right: Animated Editor Graphic -->
-        <div class="hero-visual fade-in fade-in-delay-2">
-          <div class="editor-wrap">
+        <!-- RIGHT: Integrated visual grid -->
+        <div class="hero-v2-right fade-in fade-in-delay-2">
 
-            <!-- Floating badges -->
-            <div class="hero-float hero-float-1 glass-purple" style="font-size:12px;font-weight:600;color:var(--purple-light);padding:8px 14px;border-radius:12px;">
-              <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ade80;margin-right:6px;animation:pulse 1.5s infinite;"></span>
-              Rendering 4K
+          <!-- Preview window — full width -->
+          <div class="hcard-preview">
+            <div class="hcard-bar hcard-bar-top"></div>
+            <div class="hcard-bar hcard-bar-bottom"></div>
+            <div class="hcard-scene"></div>
+            <div class="hcard-ray" style="left:15%;animation-delay:0s"></div>
+            <div class="hcard-ray" style="left:45%;animation-delay:1.5s"></div>
+            <div class="hcard-ray" style="left:72%;animation-delay:3s"></div>
+            <div class="hcard-timecode">00:01:24:12</div>
+            <div class="hcard-play">
+              <div class="hcard-play-dot"></div>
+              <span class="hcard-play-label">PLAYING</span>
             </div>
-            <div class="hero-float hero-float-2 glass" style="font-size:12px;font-weight:600;color:var(--text-muted);padding:8px 14px;border-radius:12px;">
-              🎨 Color Grade Applied
+          </div>
+
+          <!-- Timeline card — full width -->
+          <div class="hcard hcard-timeline glass">
+            <div class="hcard-tl-header">
+              <span class="hcard-tl-title">Timeline</span>
+              <span class="hcard-tl-time">00:03:45:00</span>
             </div>
-
-            <!-- Editor Card -->
-            <div class="editor-card glass">
-              <!-- Top bar -->
-              <div class="editor-topbar">
-                <span class="editor-dot" style="background:#ff5f57"></span>
-                <span class="editor-dot" style="background:#febc2e"></span>
-                <span class="editor-dot" style="background:#28c840"></span>
-                <span class="editor-title-bar">DaVinci Resolve — Edit</span>
+            <div class="hcard-tracks">
+              <div class="hcard-playhead"></div>
+              <div class="hcard-track">
+                <div class="hcard-clip" style="background:linear-gradient(90deg,#7c3aed,#a855f7);width:32%;animation-delay:0s"></div>
+                <div class="hcard-clip" style="background:linear-gradient(90deg,#6d28d9,#8b5cf6);width:24%;animation-delay:0.3s"></div>
+                <div class="hcard-clip" style="background:linear-gradient(90deg,#7c3aed,#a855f7);width:28%;animation-delay:0.6s"></div>
               </div>
-
-              <!-- Preview window -->
-              <div class="preview-window">
-                <div class="cinema-bar cinema-top"></div>
-                <div class="cinema-bar cinema-bottom"></div>
-                <div class="scene">
-                  <div class="scene-gradient"></div>
-                  <div class="light-ray" style="left:20%;transform:rotate(-15deg);animation-delay:0s"></div>
-                  <div class="light-ray" style="left:50%;transform:rotate(5deg);animation-delay:1s"></div>
-                  <div class="light-ray" style="left:78%;transform:rotate(-8deg);animation-delay:2s"></div>
-                </div>
-                <div class="timecode">00:01:24:12</div>
-                <div class="play-indicator">
-                  <span class="play-dot"></span>
-                  <span class="play-text">PLAY</span>
-                </div>
+              <div class="hcard-track">
+                <div class="hcard-clip" style="background:linear-gradient(90deg,#0ea5e9,#38bdf8);width:58%;animation-delay:0.2s"></div>
+                <div class="hcard-clip" style="background:linear-gradient(90deg,#0284c7,#0ea5e9);width:26%;animation-delay:0.5s"></div>
               </div>
-
-              <!-- Timeline -->
-              <div class="tl-wrap">
-                <div class="tl-header">
-                  <span class="tl-label">Timeline</span>
-                  <span class="tl-time">00:03:45:00</span>
-                </div>
-                <div class="tl-tracks">
-                  <div class="tl-playhead"></div>
-                  <div class="tl-track">
-                    <span class="tl-track-label">VIDEO</span>
-                    <div class="tl-clip" style="background:linear-gradient(90deg,#7c3aed,#a855f7);width:35%"></div>
-                    <div class="tl-clip" style="background:linear-gradient(90deg,#6d28d9,#8b5cf6);width:25%"></div>
-                    <div class="tl-clip" style="background:linear-gradient(90deg,#7c3aed,#a855f7);width:20%"></div>
-                  </div>
-                  <div class="tl-track">
-                    <span class="tl-track-label">AUDIO</span>
-                    <div class="tl-clip" style="background:linear-gradient(90deg,#0ea5e9,#38bdf8);width:60%"></div>
-                    <div class="tl-clip" style="background:linear-gradient(90deg,#0284c7,#0ea5e9);width:28%"></div>
-                  </div>
-                  <div class="tl-track">
-                    <span class="tl-track-label">MUSIC</span>
-                    <div class="tl-clip" style="background:linear-gradient(90deg,#d946ef,#e879f9);width:82%"></div>
-                  </div>
-                  <div class="tl-track">
-                    <span class="tl-track-label">TEXT</span>
-                    <div class="tl-clip" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);width:20%"></div>
-                    <div class="tl-clip" style="background:linear-gradient(90deg,#d97706,#f59e0b);width:15%"></div>
-                  </div>
-                </div>
+              <div class="hcard-track">
+                <div class="hcard-clip" style="background:linear-gradient(90deg,#d946ef,#e879f9);width:80%;animation-delay:0.4s"></div>
               </div>
-
-              <!-- Tool buttons -->
-              <div class="editor-tools">
-                <div class="editor-tool active">✂️ Cut</div>
-                <div class="editor-tool">🎨 Color</div>
-                <div class="editor-tool">🔊 Audio</div>
-                <div class="editor-tool">✨ Fusion</div>
+              <div class="hcard-track">
+                <div class="hcard-clip" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);width:18%;animation-delay:0.1s"></div>
+                <div class="hcard-clip" style="background:linear-gradient(90deg,#d97706,#f59e0b);width:22%;animation-delay:0.7s"></div>
               </div>
             </div>
+          </div>
+
+          <!-- Bottom row: tools + status -->
+          <div class="hero-v2-row">
+
+            <!-- Tools card -->
+            <div class="hcard glass">
+              <div class="hcard-tools-grid">
+                <div class="hcard-tool active">
+                  <span class="hcard-tool-icon">✂️</span> Cut
+                </div>
+                <div class="hcard-tool">
+                  <span class="hcard-tool-icon">🎨</span> Color
+                </div>
+                <div class="hcard-tool">
+                  <span class="hcard-tool-icon">🔊</span> Audio
+                </div>
+                <div class="hcard-tool">
+                  <span class="hcard-tool-icon">✨</span> Fusion
+                </div>
+              </div>
+            </div>
+
+            <!-- Status card -->
+            <div class="hcard hcard-status glass">
+              <div class="hcard-status-row">
+                <span class="hcard-status-label">Status</span>
+                <span class="hcard-status-val">
+                  <span class="status-dot-green"></span> Available
+                </span>
+              </div>
+              <div class="hcard-status-row">
+                <span class="hcard-status-label">Tool</span>
+                <span class="hcard-status-val">DaVinci Resolve</span>
+              </div>
+              <div class="hcard-status-row">
+                <span class="hcard-status-label">Based in</span>
+                <span class="hcard-status-val">Kerala, India</span>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -192,31 +572,26 @@
           <h3 class="service-title">Video Editing</h3>
           <p class="service-desc">Narrative-driven cuts that keep viewers watching. YouTube long-form, short-form Reels, corporate films, documentaries, podcasts, and music videos.</p>
         </div>
-
         <div class="service-card glass fade-in fade-in-delay-1">
           <div class="service-icon">🎨</div>
           <h3 class="service-title">Color Grading</h3>
           <p class="service-desc">Professional color work in DaVinci Resolve Studio — from correction to cinematic grade. Your footage will look exactly how you envisioned it.</p>
         </div>
-
         <div class="service-card glass fade-in fade-in-delay-2">
           <div class="service-icon">🔊</div>
           <h3 class="service-title">Sound Design</h3>
           <p class="service-desc">Clean audio mix, sound effects, background music integration, and dialogue clarity that makes your video feel polished and professional.</p>
         </div>
-
         <div class="service-card glass fade-in fade-in-delay-3">
           <div class="service-icon">✨</div>
           <h3 class="service-title">Motion Graphics</h3>
           <p class="service-desc">Animated titles, lower thirds, transitions, and kinetic elements that bring energy and personality to your content.</p>
         </div>
-
         <div class="service-card glass fade-in fade-in-delay-4">
           <div class="service-icon">💬</div>
           <h3 class="service-title">Subtitles & Captions</h3>
           <p class="service-desc">Accurate, styled subtitles that improve accessibility and boost watch time — especially for short-form content.</p>
         </div>
-
         <div class="service-card glass fade-in fade-in-delay-5">
           <div class="service-icon">🖼️</div>
           <h3 class="service-title">Thumbnail Design</h3>
@@ -242,14 +617,12 @@
         <div class="section-eyebrow fade-in">Portfolio</div>
         <h2 class="display-lg fade-in fade-in-delay-1">Recent work</h2>
       </div>
-
       <div class="portfolio-grid">
         <div class="portfolio-empty glass fade-in">
           <div style="font-size:48px;">🎬</div>
           <p>Projects coming soon — <a href="pages/contact.html" style="color:var(--purple-light)">reach out</a> to discuss your project.</p>
         </div>
       </div>
-
       <div style="text-align:center; margin-top:48px;" class="fade-in">
         <a href="pages/portfolio.html" class="btn btn-glass">
           View full portfolio
