@@ -3,7 +3,7 @@
    Design tokens: dark base, violet accent, liquid glass UI
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
   /* Palette */
@@ -22,7 +22,7 @@
   --glass-border:rgba(255, 255, 255, 0.08);
 
   /* Type */
-  --font-display: 'Syne', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-body:    'Inter', sans-serif;
 
   /* Spacing */
