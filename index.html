@@ -48,51 +48,84 @@
           </div>
         </div>
 
-        <!-- Right: Card visual -->
+        <!-- Right: Animated Editor Graphic -->
         <div class="hero-visual fade-in fade-in-delay-2">
-          <div class="hero-card glass" style="position:relative;">
+          <div class="editor-wrap">
 
             <!-- Floating badges -->
-            <div class="hero-float hero-float-1 glass-purple" style="font-size:12px;font-weight:600;color:var(--purple-light);">
-              🎬 DaVinci Resolve Studio
+            <div class="hero-float hero-float-1 glass-purple" style="font-size:12px;font-weight:600;color:var(--purple-light);padding:8px 14px;border-radius:12px;">
+              <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ade80;margin-right:6px;animation:pulse 1.5s infinite;"></span>
+              Rendering 4K
             </div>
-            <div class="hero-float hero-float-2 glass" style="font-size:12px;font-weight:600;color:var(--text-muted);">
-              🌍 Available Worldwide
-            </div>
-
-            <div class="hero-card-header">
-              <div class="hero-avatar">SJ</div>
-              <div>
-                <div class="hero-card-title">Subin Joseph</div>
-                <div class="hero-card-sub">Video Editor · Kerala, India</div>
-              </div>
+            <div class="hero-float hero-float-2 glass" style="font-size:12px;font-weight:600;color:var(--text-muted);padding:8px 14px;border-radius:12px;">
+              🎨 Color Grade Applied
             </div>
 
-            <div class="hero-stat-grid">
-              <div class="hero-stat">
-                <div class="hero-stat-num">7+</div>
-                <div class="hero-stat-label">Video types</div>
+            <!-- Editor Card -->
+            <div class="editor-card glass">
+              <!-- Top bar -->
+              <div class="editor-topbar">
+                <span class="editor-dot" style="background:#ff5f57"></span>
+                <span class="editor-dot" style="background:#febc2e"></span>
+                <span class="editor-dot" style="background:#28c840"></span>
+                <span class="editor-title-bar">DaVinci Resolve — Edit</span>
               </div>
-              <div class="hero-stat">
-                <div class="hero-stat-num">∞</div>
-                <div class="hero-stat-label">Creative ideas</div>
-              </div>
-              <div class="hero-stat">
-                <div class="hero-stat-num">24h</div>
-                <div class="hero-stat-label">Response time</div>
-              </div>
-              <div class="hero-stat">
-                <div class="hero-stat-num">100%</div>
-                <div class="hero-stat-label">Dedication</div>
-              </div>
-            </div>
 
-            <div class="hero-services-preview">
-              <span class="service-chip">Video Editing</span>
-              <span class="service-chip">Color Grading</span>
-              <span class="service-chip">Sound Design</span>
-              <span class="service-chip">Motion Graphics</span>
-              <span class="service-chip">Captions</span>
+              <!-- Preview window -->
+              <div class="preview-window">
+                <div class="cinema-bar cinema-top"></div>
+                <div class="cinema-bar cinema-bottom"></div>
+                <div class="scene">
+                  <div class="scene-gradient"></div>
+                  <div class="light-ray" style="left:20%;transform:rotate(-15deg);animation-delay:0s"></div>
+                  <div class="light-ray" style="left:50%;transform:rotate(5deg);animation-delay:1s"></div>
+                  <div class="light-ray" style="left:78%;transform:rotate(-8deg);animation-delay:2s"></div>
+                </div>
+                <div class="timecode">00:01:24:12</div>
+                <div class="play-indicator">
+                  <span class="play-dot"></span>
+                  <span class="play-text">PLAY</span>
+                </div>
+              </div>
+
+              <!-- Timeline -->
+              <div class="tl-wrap">
+                <div class="tl-header">
+                  <span class="tl-label">Timeline</span>
+                  <span class="tl-time">00:03:45:00</span>
+                </div>
+                <div class="tl-tracks">
+                  <div class="tl-playhead"></div>
+                  <div class="tl-track">
+                    <span class="tl-track-label">VIDEO</span>
+                    <div class="tl-clip" style="background:linear-gradient(90deg,#7c3aed,#a855f7);width:35%"></div>
+                    <div class="tl-clip" style="background:linear-gradient(90deg,#6d28d9,#8b5cf6);width:25%"></div>
+                    <div class="tl-clip" style="background:linear-gradient(90deg,#7c3aed,#a855f7);width:20%"></div>
+                  </div>
+                  <div class="tl-track">
+                    <span class="tl-track-label">AUDIO</span>
+                    <div class="tl-clip" style="background:linear-gradient(90deg,#0ea5e9,#38bdf8);width:60%"></div>
+                    <div class="tl-clip" style="background:linear-gradient(90deg,#0284c7,#0ea5e9);width:28%"></div>
+                  </div>
+                  <div class="tl-track">
+                    <span class="tl-track-label">MUSIC</span>
+                    <div class="tl-clip" style="background:linear-gradient(90deg,#d946ef,#e879f9);width:82%"></div>
+                  </div>
+                  <div class="tl-track">
+                    <span class="tl-track-label">TEXT</span>
+                    <div class="tl-clip" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);width:20%"></div>
+                    <div class="tl-clip" style="background:linear-gradient(90deg,#d97706,#f59e0b);width:15%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tool buttons -->
+              <div class="editor-tools">
+                <div class="editor-tool active">✂️ Cut</div>
+                <div class="editor-tool">🎨 Color</div>
+                <div class="editor-tool">🔊 Audio</div>
+                <div class="editor-tool">✨ Fusion</div>
+              </div>
             </div>
           </div>
         </div>
